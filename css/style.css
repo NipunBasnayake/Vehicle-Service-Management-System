@@ -1,7 +1,7 @@
 body {
     margin: 0;
     background: #FFFFFF;
-    font-family: 'Roboto', sans-serif; /* Change to your preferred font */
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
 }
 
@@ -21,6 +21,7 @@ html, body {
 
 
 /*---------------------------------------- INDEX ----------------------------------------*/
+
 
 .banner {
     position: relative;
@@ -116,6 +117,7 @@ html, body {
 
 /*---------------------------------------- HEADER ----------------------------------------*/
 
+
 .header {
     margin: 0;
     background: #222831;
@@ -194,13 +196,13 @@ html, body {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-    background-color: #919191; /* Replace this with your desired color */
-    color: #00f2ff; /* Keep or modify this for the text color */
+    background-color: #919191;
+    color: #00f2ff;
 }
 
 
-
 /*---------------------------------------- FOOTER ----------------------------------------*/
+
 
 footer {
     background: #212121;
@@ -381,36 +383,40 @@ footer {
     z-index: 2;
 }
 
-.wthree-services-left {
-    text-align: center;
-}
-
-.responsive-image {
-    max-width: 100%;
-    height: auto;
+.wthree-services-right {
+    flex: 1;
+    padding: 2em;
+    background-color: #222831;
     border-radius: 10px;
-    margin-top: 2em;
+    color: #023246;
+    border: 2px solid #00ADB5;
 }
 
-h3.about-heading {
-    font-size: 2.8em;
+.wthree-services-right-top {
+    padding: 20px;
+}
+
+.about-heading {
+    font-size: 2.5em;
     font-weight: bold;
-    color: #EEEEEE;
-    margin-bottom: 0.8em;
+    color: #ffffff;
+    margin-bottom: 0.5em;
 }
 
-p.about-para {
-    color: #c8c8c8;
+.about-para {
+    color: #ffffff;
     font-size: 1.1em;
     line-height: 1.8em;
+    margin-top: 0.5em;
 }
+
 
 
 
 
 /*---------------------------------------- LOGIN/REGISTER COMMON ----------------------------------------*/
 
-/* Page title */
+
 .page-title {
     color: white;
     font-size: 3rem;
@@ -418,7 +424,6 @@ p.about-para {
     margin-bottom: 20px;
 }
 
-/* Form container */
 .form-container {
     background-color: white;
     padding: 40px;
@@ -427,7 +432,6 @@ p.about-para {
     margin-top: 30px;
 }
 
-/* Form Header - Shared by Login and Register */
 .form-header {
     text-align: center;
     margin-bottom: 20px;
@@ -438,7 +442,6 @@ p.about-para {
     font-size: 1.5rem;
 }
 
-/* Input fields shared by both Login and Register */
 .form-input {
     width: 100%;
     padding: 15px;
@@ -452,7 +455,6 @@ p.about-para {
     border-color: #287194;
 }
 
-/* Button styling shared by both Login and Register */
 .btn-submit {
     background-color: #287194;
     color: white;
@@ -468,7 +470,6 @@ p.about-para {
     background-color: #023246;
 }
 
-/* Forgot password link - specific to Login */
 .forgot-password a {
     color: #287194;
     font-size: 14px;
@@ -479,7 +480,6 @@ p.about-para {
     color: #023246;
 }
 
-/* Links for Register/Login - shared by both forms */
 .text-center a {
     color: #023246;
     text-decoration: none;
@@ -504,7 +504,7 @@ p.about-para {
 
 /*---------------------------------------- MAIL US ----------------------------------------*/
 
-/* Contact address */
+
 .agileits-contact-address {
     margin-top: 2em;
 }
@@ -526,7 +526,6 @@ p.about-para {
     text-align: left;
 }
 
-/* Contact address list */
 .agileits-contact-address ul {
     padding: 0;
     margin: 0;
@@ -565,7 +564,6 @@ p.about-para {
     color: #00aeff;
 }
 
-/* Contact form grid */
 .agileinfo-contact-form-grid {
     margin-top: 2em;
 }
@@ -595,7 +593,6 @@ p.about-para {
     resize: none;
 }
 
-/* Submit button */
 button.btn1 {
     border: 1px solid #00aeff;
     background-color: #00aeff;
@@ -611,7 +608,6 @@ button.btn1:hover {
     background-color: white;
 }
 
-/* Map section */
 .w3agile-map {
     margin-top: 3em;
 }
@@ -628,12 +624,6 @@ button.btn1:hover {
 /*---------------------------------------- END ----------------------------------------*/
 
 
-
-
-
-
-
-/*-- advantages --*/
 .advantages {
     background: url(../homeImages/1.jpg)no-repeat;
     min-height: 350px;
@@ -679,8 +669,7 @@ button.btn1:hover {
     -o-background-size: 3px;
     -ms-background-size: 3px;
 }
-/*-- //advantages --*/
-/*-- team --*/
+
 .team-heading h3{
 	color:#000000;
 }
@@ -764,7 +753,7 @@ button.btn1:hover {
 	background: #f26522;
 	color: #FFFFFF;
 }
-/* Better spacing on download options in getting started */
+
 .bs-docs-dl-options h4 {
   margin-top: 15px;
   margin-bottom: 5px;
@@ -833,17 +822,18 @@ button.btn1:hover {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-/*--*/
 
 .ih-item.circle.effect5 {
   -webkit-perspective: 900px;
   -moz-perspective: 900px;
   perspective: 900px;
 }
+
 .ih-item.circle.effect5.colored .info .info-back {
   background: #1a4a72;
   background: rgba(26, 74, 114, 0.6);
 }
+
 .ih-item.circle.effect5 .info {
   -webkit-transition: all 0.35s ease-in-out;
   -moz-transition: all 0.35s ease-in-out;
@@ -896,9 +886,7 @@ button.btn1:hover {
 .ih-item.circle.effect5:hover .info .info-back {
   visibility: visible;
 }
-/*-- //team --*/
-/*-- gallery --*/
-/*-- gallery --*/
+
 .grid {
 	position: relative;
 	clear: both;
@@ -908,7 +896,6 @@ button.btn1:hover {
 	text-align: center;
 }
 
-/* Common style */
 .grid figure {
 	position: relative;	
 	overflow: hidden;
@@ -948,8 +935,6 @@ button.btn1:hover {
 	height: 100%;
 }
 
-/* Anchor will cover the whole item by default */
-/* For some effects it will show as a button */
 .grid figure figcaption > a {
 	z-index: 1000;
 	text-indent: 200%;
@@ -1015,9 +1000,7 @@ figure.effect-apollo:hover p {
 	-webkit-transition-delay: 0.1s;
 	transition-delay: 0.1s;
 }
-/*-- //gallery --*/
-/*-- //gallery --*/
-/*-- icons --*/
+
 .agileits-icons-title{
 	text-align:center;
 }

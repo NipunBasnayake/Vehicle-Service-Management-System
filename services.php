@@ -44,51 +44,56 @@ include('includes/dbconnection.php');
 
     <!-- banner -->
     <div class="banner jarallax">
-        <div class="agileinfo-dot">
-            <div class="wthree-heading">
-                <div class="container">
-				<h2>Vehicle Services</h2>
-                    <div class="wthree-services-bottom-grids">
-						<p class="wow fadeInUp animated" data-wow-delay=".5s">
-							List of services we provide for vehicle maintenance and repair.
-						</p>
-                        <div class="service-container wow fadeInUp animated" data-wow-delay=".5s">
-                            <?php
-                            $sql = "SELECT * from tblservice";
-                            $query = $dbh->prepare($sql);
-                            $query->execute();
-                            $results = $query->fetchAll(PDO::FETCH_OBJ);
+    <div class="agileinfo-dot">
+        <div class="wthree-heading">
+            <div class="container">
+                <h2>Vehicle Services</h2>
+                <p class="wow fadeInUp animated" data-wow-delay=".5s">
+                    List of services we provide for vehicle maintenance and repair.
+                </p>
+                <br>
+                <!-- Service Cards Section -->
+                <div class="wthree-services-bottom-grids">
+                    <div class="service-container wow fadeInUp animated" data-wow-delay=".5s">
+                        <?php
+                        $sql = "SELECT * from tblservice";
+                        $query = $dbh->prepare($sql);
+                        $query->execute();
+                        $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-                            if ($query->rowCount() > 0) {
-                                foreach ($results as $row) { ?>
-                                    <div class="service-card">
-                                        <div class="service-icon">
-                                            <!-- Icon for service -->
-                                            <i class="fa fa-wrench" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="service-info">
-                                            <h5><?php echo htmlentities($row->ServiceName); ?></h5>
-                                            <p><?php echo htmlentities($row->SerDes); ?></p>
-                                            <span class="price">$<?php echo htmlentities($row->ServicePrice); ?></span>
-                                        </div>
-                                        <div class="service-action">
-                                            <?php if (empty($_SESSION['obbsuid'])) { ?>
-                                                <a href="login.php" class="btn btn-default hvr-radial-in">Book Service</a>
-                                            <?php } else { ?>
-                                                <a href="book-service.php?bookid=<?php echo $row->ID; ?>" class="btn btn-default hvr-radial-in">Book Service</a>
-                                            <?php } ?>
-                                        </div>
+                        if ($query->rowCount() > 0) {
+                            foreach ($results as $row) { ?>
+                                <!-- Individual Service Card -->
+                                <div class="service-card">
+                                    <div class="service-icon">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
                                     </div>
-                                <?php }
-                            } ?>
-                        </div>
-
-                        <div class="clearfix"></div>
+                                    <div class="service-info">
+                                        <h3><?php echo htmlentities($row->ServiceName); ?></h3>
+                                        <p><?php echo htmlentities($row->SerDes); ?></p>
+                                        <span class="price">$<?php echo htmlentities($row->ServicePrice); ?></span>
+                                    </div>
+                                    <div class="service-action">
+                                        <?php if (empty($_SESSION['obbsuid'])) { ?>
+                                            <br>
+                                            <a href="login.php" class="btn btn-default hvr-radial-in">Book Service</a>
+                                        <?php } else { ?>
+                                            <a href="book-service.php?bookid=<?php echo $row->ID; ?>" class="btn btn-default hvr-radial-in">Book Service</a>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            <?php }
+                        } ?>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
+                <!-- End of Service Cards Section -->
+
             </div>
         </div>
     </div>
+</div>
+
 
     <div class="about-top"></div>
 

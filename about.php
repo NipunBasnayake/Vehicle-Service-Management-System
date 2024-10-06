@@ -44,40 +44,45 @@ include('includes/dbconnection.php');
 
     <!-- Banner -->
 	<div class="banner jarallax" style="background: url('homeImages/13.jpg') no-repeat center center; background-size: cover;">
-		<div class="container">
-			<div class="wthree-services-bottom-grids">
-				<!-- Image Section -->
-				<div class="col-md-6 wthree-services-left">
-					<img src="homeImages/3.jpg" alt="Vehicle Service Center" class="responsive-image">
-				</div>
-				<!-- Text Section -->
-				<div class="col-md-6 wthree-services-right">
-					<div class="wthree-services-right-top">
-						<?php
-							$sql = "SELECT * FROM tblpage WHERE PageType='aboutus'";
-							$query = $dbh->prepare($sql);
-							$query->execute();
-							$results = $query->fetchAll(PDO::FETCH_OBJ);
+    <div class="container">
+        <div class="wthree-services-bottom-grids">
+            <!-- Text Section -->
+            <div class="wthree-services-right">
+                <div class="wthree-services-right-top">
+                    <?php
+                    // Fetch 'About Us' content from the database
+                    $sql = "SELECT * FROM tblpage WHERE PageType='aboutus'";
+                    $query = $dbh->prepare($sql);
+                    $query->execute();
+                    $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-							if ($query->rowCount() > 0) {
-								foreach ($results as $row) { ?>
-									<h4 class="section-title">
-										<?php echo htmlentities($row->PageTitle); ?>
-									</h4>
-									<p class="section-description">
-										<?php echo $row->PageDescription; ?>
-									</p>
-						<?php
-								}
-							}
-						?>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
+                    // Display the content if available
+                    if ($query->rowCount() > 0) {
+                        foreach ($results as $row) { ?>
+                            <!-- Section Title -->
+                            <h3 class="about-heading">
+                                <?php echo htmlspecialchars($row->PageTitle); ?>
+                            </h3>
+                            <!-- Section Description -->
+                            <div class="about-para">
+                                <?php echo html_entity_decode($row->PageDescription); ?>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <!-- Clear floats for grid system -->
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
     <!-- //Banner -->
 
     <!-- Footer -->
