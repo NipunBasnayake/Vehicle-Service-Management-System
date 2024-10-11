@@ -4,140 +4,129 @@ error_reporting(0);
 include('includes/dbconnection.php');
 
 if(isset($_POST['login'])) 
-  {
-    $username=$_POST['username'];
-    $password=md5($_POST['password']);
-    $sql ="SELECT ID FROM tbladmin WHERE UserName=:username and Password=:password";
-    $query=$dbh->prepare($sql);
-    $query-> bindParam(':username', $username, PDO::PARAM_STR);
-$query-> bindParam(':password', $password, PDO::PARAM_STR);
-    $query-> execute();
-    $results=$query->fetchAll(PDO::FETCH_OBJ);
-    if($query->rowCount() > 0)
 {
-foreach ($results as $result) {
-$_SESSION['odmsaid']=$result->ID;
-}
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
+    $sql = "SELECT ID FROM tbladmin WHERE UserName=:username and Password=:password";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':username', $username, PDO::PARAM_STR);
+    $query->bindParam(':password', $password, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-  if(!empty($_POST["remember"])) {
-//COOKIES for username
-setcookie ("user_login",$_POST["username"],time()+ (10 * 365 * 24 * 60 * 60));
-//COOKIES for password
-setcookie ("userpassword",$_POST["password"],time()+ (10 * 365 * 24 * 60 * 60));
-} else {
-if(isset($_COOKIE["user_login"])) {
-setcookie ("user_login","");
-if(isset($_COOKIE["userpassword"])) {
-setcookie ("userpassword","");
+    if($query->rowCount() > 0)
+    {
+        foreach ($results as $result) {
+            $_SESSION['odmsaid'] = $result->ID;
         }
-      }
-}
-$_SESSION['login']=$_POST['username'];
-echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
-} else{
-echo "<script>alert('Invalid Details');</script>";
-}
-}
 
+        if(!empty($_POST["remember"])) {
+            setcookie ("user_login", $_POST["username"], time() + (10 * 365 * 24 * 60 * 60));
+            setcookie ("userpassword", $_POST["password"], time() + (10 * 365 * 24 * 60 * 60));
+        } else {
+            if(isset($_COOKIE["user_login"])) {
+                setcookie ("user_login", "");
+            }
+            if(isset($_COOKIE["userpassword"])) {
+                setcookie ("userpassword", "");
+            }
+        }
+        $_SESSION['login'] = $_POST['username'];
+        echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
+    } else {
+        echo "<script>alert('Invalid Details');</script>";
+    }
+}
 ?>
+
 <!doctype html>
-<html lang="en" class="no-focus"> <!--<![endif]-->
-    <head>       
-        <title>Online Banquet Booking System - Login Page</title>
-        <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
-    </head>
-    <body>
-      
-        <div id="page-container" class="main-content-boxed">
-            <!-- Main Container -->
-            <main id="main-container">
-                <!-- Page Content -->
-                <div class="bg-image" style="background-image: url('assets/img/photos/photo34@2x.jpg');">
-                    <div class="row mx-0 bg-black-op">
-                        <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
-                            <div class="p-30 invisible" data-toggle="appear">
-                                <p class="font-size-h3 font-w600 text-white">
-                                    Online Banquet Booking System.
-                                </p>
-                                <p class="font-italic text-white-op">
-                                    Copyright &copy; <span class="js-year-copy">2020</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="hero-static col-md-6 col-xl-4 d-flex align-items-center bg-white invisible" data-toggle="appear" data-class="animated fadeInRight">
-                            <div class="content content-full">
-                                <!-- Header -->
-                                <div class="px-30 py-10">
-                                    <a class="link-effect font-w700" href="login.php">
-                                        <i class="si si-fire"></i>
-                                        <span class="font-size-xl">OBBS</span>
-                                    </a>
-                                    <h1 class="h3 font-w700 mt-30 mb-10">Welcome to Your Dashboard</h1>
-                                    <h2 class="h5 font-w400 text-muted mb-0">Please sign in</h2>
-                                </div>
-                               
-                                <form class="js-validation-signin px-30" method="post">
-                                    <div class="form-group row">
-                                        <div class="col-12">
-                                            <div class="form-material floating">
-                                                <input type="text" class="form-control"  required="true" name="username" value="<?php if(isset($_COOKIE["user_login"])) { echo $_COOKIE["user_login"]; } ?>">
-                                                <label for="login-username">Username</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-12">
-                                            <div class="form-material floating">
-                                                <input type="password" class="form-control" name="password" required="true" value="<?php if(isset($_COOKIE["userpassword"])) { echo $_COOKIE["userpassword"]; } ?>">
-                                                <label for="login-password">Password</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="checkbox checkbox-primary">
-                <input type="checkbox" id="remember" name="remember" <?php if(isset($_COOKIE["user_login"])) { ?> checked <?php } ?> />
-                <label for="keep_me_logged_in">Keep me signed in</label>
-            </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-sm btn-hero btn-alt-primary" name="login">
-                                            <i class="si si-login mr-10"></i> Sign In
-                                        </button>
-                                        <div class="mt-30">
-                                            
-                                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="forgot-password.php">
-                                                <i class="fa fa-warning mr-5"></i> Forgot Password
-                                            </a>
-                                            <a href="../index.php">Back Home!!</a>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- END Sign In Form -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END Page Content -->
-            </main>
-            <!-- END Main Container -->
+<html lang="en">
+<head>
+    <title>Admin Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            width: 300px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"], .form-group input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .auth-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .auth-links a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Admin Login</h2>
+    <form method="post">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" required="true" value="<?php if(isset($_COOKIE["user_login"])) { echo $_COOKIE["user_login"]; } ?>">
         </div>
-        <!-- END Page Container -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" required="true" value="<?php if(isset($_COOKIE["userpassword"])) { echo $_COOKIE["userpassword"]; } ?>">
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="remember" name="remember" <?php if(isset($_COOKIE["user_login"])) { ?> checked <?php } ?> />
+            <label for="remember">Keep me signed in</label>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn" name="login">Sign In</button>
+        </div>
+    </form>
 
-        <!-- Codebase Core JS -->
-        <script src="assets/js/core/jquery.min.js"></script>
-        <script src="assets/js/core/popper.min.js"></script>
-        <script src="assets/js/core/bootstrap.min.js"></script>
-        <script src="assets/js/core/jquery.slimscroll.min.js"></script>
-        <script src="assets/js/core/jquery.scrollLock.min.js"></script>
-        <script src="assets/js/core/jquery.appear.min.js"></script>
-        <script src="assets/js/core/jquery.countTo.min.js"></script>
-        <script src="assets/js/core/js.cookie.min.js"></script>
-        <script src="assets/js/codebase.js"></script>
+    <div class="auth-links">
+        <a href="forgot-password.php">Forgot Password?</a> | 
+        <a href="../index.php">Back Home</a>
+    </div>
+</div>
 
-        <!-- Page JS Plugins -->
-        <script src="assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
-
-        <!-- Page JS Code -->
-        <script src="assets/js/pages/op_auth_signin.js"></script>
-    </body>
+</body>
 </html>

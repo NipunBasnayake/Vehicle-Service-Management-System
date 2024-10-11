@@ -42,10 +42,11 @@ if (strlen($_SESSION['obbsuid']==0)) {
 <![endif]-->
 </head>
 <body>
+<?php include_once('includes/header.php');?>
 	<!-- banner -->
 	<div class="banner jarallax">
 		<div class="agileinfo-dot">
-		<?php include_once('includes/header.php');?>
+		
 			<div class="wthree-heading">
 				<h2>View Booking</h2>
 			</div>
@@ -64,23 +65,23 @@ if (strlen($_SESSION['obbsuid']==0)) {
                   $uid=$_SESSION['obbsuid'];
                   $bookingid=$_GET['bookingid'];
 
-$sql="SELECT tbluser.FullName,tbluser.MobileNumber,tbluser.Email,tblbooking.BookingID,tblbooking.BookingDate,tblbooking.BookingFrom,tblbooking.BookingTo,tblbooking.EventType,tblbooking.Numberofguest,tblbooking.Message, tblbooking.Remark,tblbooking.Status,tblbooking.UpdationDate,tblservice.ServiceName,tblservice.SerDes,tblservice.ServicePrice,Remark,states.state_title,cityName
- from tblbooking join tblservice on tblbooking.ServiceID=tblservice.ID 
-join tbluser on tbluser.ID=tblbooking.UserID 
-left join states on states.id=tblbooking.stateId 
+                    $sql="SELECT tbluser.FullName,tbluser.MobileNumber,tbluser.Email,tblbooking.BookingID,tblbooking.BookingDate,tblbooking.BookingFrom,tblbooking.BookingTo,tblbooking.EventType,tblbooking.Numberofguest,tblbooking.Message, tblbooking.Remark,tblbooking.Status,tblbooking.UpdationDate,tblservice.ServiceName,tblservice.SerDes,tblservice.ServicePrice,Remark,states.state_title,cityName
+                    from tblbooking join tblservice on tblbooking.ServiceID=tblservice.ID 
+                    join tbluser on tbluser.ID=tblbooking.UserID 
+                    left join states on states.id=tblbooking.stateId 
 
-where tblbooking.UserID=:uid and tblbooking.BookingID=:bookingid";
-$query = $dbh -> prepare($sql);
-$query-> bindParam(':uid', $uid, PDO::PARAM_STR);
-$query-> bindParam(':bookingid', $bookingid, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
+                    where tblbooking.UserID=:uid and tblbooking.BookingID=:bookingid";
+                    $query = $dbh -> prepare($sql);
+                    $query-> bindParam(':uid', $uid, PDO::PARAM_STR);
+                    $query-> bindParam(':bookingid', $bookingid, PDO::PARAM_STR);
+                    $query->execute();
+                    $results=$query->fetchAll(PDO::FETCH_OBJ);
 
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $row)
-{               ?>
+                    $cnt=1;
+                    if($query->rowCount() > 0)
+                    {
+                    foreach($results as $row)
+                    {               ?>
                             <table border="1" class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination">
                                 <tr>
                                     <th colspan="5" style="text-align: center;font-size: 20px;color: blue;">Booking Number: <?php  echo $row->BookingID;?>

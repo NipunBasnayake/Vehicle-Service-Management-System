@@ -59,10 +59,7 @@ echo "<script>alert('Email id or Mobile no is invalid');</script>";
         });
     });
 </script> 
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<![endif]-->
-    <script type="text/javascript">
+<script type="text/javascript">
 function valid()
 {
 if(document.chngpwd.newpassword.value!= document.chngpwd.confirmpassword.value)
@@ -76,57 +73,43 @@ return true;
 </script>
 </head>
 <body>
+    <?php include_once('includes/header.php');?>
+
     <!-- banner -->
     <div class="banner jarallax">
-        <div class="agileinfo-dot">
-            <?php include_once('includes/header.php');?>
-            <div class="wthree-heading">
-                <h2>Forgot Password</h2>
-            </div>
-        </div>
-    </div>
-    <!-- //banner -->
-    <!-- contact -->
-    <div class="contact">
-        <div class="container">
-            <div class="agile-contact-form">
-                <div class="col-md-6 contact-form-left">
-                
-                    <div class="agileits-contact-address">
-                <img src="images/5.jpg" alt="" height="500" width="500">
+        <div class="overlay">
+            <div class="container">
+                <h2 class="page-title">Reset Password</h2>
+                <div class="col-md-6 col-md-offset-3 form-container">
+                    <!-- Form Section -->
+                    <div class="form-header">
+                        <h3 class="form-title">Please enter your details</h3>
                     </div>
-                </div>
-                <div class="col-md-6 contact-form-right">
-                    <div class="contact-form-top">
-                        <h3>Reset Your Password</h3>
-                    </div>
-                    <div class="agileinfo-contact-form-grid">
+                    <div class="form-body">
                         <form action="#" method="post" name="chngpwd" onSubmit="return valid();">
-                            <input type="email" class="form-control" name="email" placeholder="E-mail" required="true">
-                            <input type="text" class="form-control" required="true" name="mobile" maxlength="10" pattern="[0-9]+" placeholder="Mobile Number">
-                            <input type="password"class="form-control"  name="newpassword" placeholder="New Password" required="true"/>
+                            <input type="email" class="form-input" name="email" placeholder="E-mail" required="true">
+                            <input type="text" class="form-input" required="true" name="mobile" maxlength="10" pattern="[0-9]+" placeholder="Mobile Number">
+                            <input type="password" class="form-input" name="newpassword" placeholder="New Password" required="true"/>
                             <br>
-                            <input type="password" name="confirmpassword" placeholder="Confirm Password" class="form-control" required="true" />
+                            <input type="password" name="confirmpassword" placeholder="Confirm Password" class="form-input" required="true" />
                             <br>
-                            <div class="forgot">
-                                                            <a href="login.php">Already have an account</a>
-                                                        </div>
-                                                        <br>
-                            <button class="btn1" name="submit">Reset</button>
-
+                            <div class="forgot-password text-right">
+                                <a href="login.php">Already have an account?</a>
+                            </div>
+                            <br>
+                            <button class="btn-submit" name="submit">Reset</button>
                         </form>
-
                     </div>
+                    <!-- End of Form Section -->
                 </div>
-                
-                <div class="clearfix"> </div>
             </div>
-            
-        
         </div>
     </div>
-    <!-- //contact -->
+
+
+    <!-- Footer -->
     <?php include_once('includes/footer.php');?>
+
     <!-- jarallax -->
     <script src="js/jarallax.js"></script>
     <script src="js/SmoothScroll.min.js"></script>
@@ -145,21 +128,11 @@ return true;
     <!-- here stars scrolling icon -->
     <script type="text/javascript">
         $(document).ready(function() {
-            /*
-                var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear' 
-                };
-            */
-                                
             $().UItoTop({ easingType: 'easeOutQuart' });
-                                
-            });
+        });
     </script>
-<!-- //here ends scrolling icon -->
-<script src="js/modernizr.custom.js"></script>
+    <!-- //here ends scrolling icon -->
+    <script src="js/modernizr.custom.js"></script>
+</body>
 
-</body> 
 </html>

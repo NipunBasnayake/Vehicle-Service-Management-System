@@ -48,75 +48,44 @@ echo "<script>alert('Email-id already exist. Please try again');</script>";
 <head>
     <title>Perera Service Centre | Register</title>
 
-    <!-- Bootstrap CSS -->
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-    <!-- FontAwesome Icons -->
     <link href="css/font-awesome.css" rel="stylesheet">
 
-    <!-- jQuery and Bootstrap JS -->
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
 </head>
 
 <body>
-    <!-- Header -->
     <?php include_once('includes/header.php'); ?>
 
-    <!-- Main Banner Section -->
-    <div class="banner jarallax">
-    <div class="overlay">
-        <div class="container">
-            <h2 class="page-title">Register</h2>
-            <div class="col-md-6 col-md-offset-3 form-container">
-                <div class="form-header">
-                    <h3 class="form-title">Register Yourself</h3>
-                </div>
-                <div class="form-body">
-                    <form method="post" name="signup" onsubmit="return checkpass();">
-                        <input type="text" name="fullname" placeholder="Full Name" required="true" class="form-input">
-                        <input type="email" name="email" placeholder="E-mail" required="true" class="form-input">
-                        <input type="text" name="mobile" placeholder="Mobile Number" required="true" class="form-input" maxlength="10" pattern="[0-9]+">
-                        <input type="password" name="password" placeholder="Password" required="true" class="form-input" id="password1">
-                        <br>
-                        <input type="password" name="confirmpassword" placeholder="Confirm Password" required="true" class="form-input" id="password2">
-                        <br>
-                        <button class="btn-submit" name="signup">Register NOW</button>
-                    </form>
+    <div class="backgroundImg">
+        <div class="logindiv">
+            <h1>Register</h1>
+            <h3>Register Yourself</h3>
+            <br>
+            
+            <div class="form-body">
+                <form method="post" name="signup" onsubmit="return checkpass();">
+                    <input type="text" name="fullname" placeholder="Full Name" required="true" class="form-input">
+                    <input type="email" name="email" placeholder="E-mail" required="true" class="form-input">
+                    <input type="text" name="mobile" placeholder="Mobile Number" required="true" class="form-input" maxlength="10" pattern="[0-9]+">
+                    <input type="password" name="password" placeholder="Password" required="true" class="form-input" id="password1">
                     <br>
-                    <div class="text-center">
-                        <a href="login.php">Already have an account?</a>
-                    </div>
+                    <input type="password" name="confirmpassword" placeholder="Confirm Password" required="true" class="form-input" id="password2">
+                    <br>
+                    <button class="btn-submit" name="signup">Register NOW</button>
+                </form>
+                <br>
+                <div class="text-center">
+                    <a href="login.php">Already have an account?</a>
                 </div>
             </div>
+
         </div>
     </div>
-</div>
 
-
-    <!-- Footer -->
     <?php include_once('includes/footer.php'); ?>
-
-    <!-- jarallax -->
-    <script src="js/jarallax.js"></script>
-    <script src="js/SmoothScroll.min.js"></script>
-    <script type="text/javascript">
-        /* init Jarallax */
-        $('.jarallax').jarallax({
-            speed: 0.5,
-            imgWidth: 1366,
-            imgHeight: 768
-        });
-    </script>
-
-    <script src="js/move-top.js"></script>
-    <script src="js/easing.js"></script>
-    <!-- Scroll to top -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $().UItoTop({ easingType: 'easeOutQuart' });
-        });
-    </script>
 </body>
+
 </html>
