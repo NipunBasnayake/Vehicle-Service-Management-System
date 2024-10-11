@@ -1,190 +1,227 @@
 /*---------------------------------------- COMMON ----------------------------------------*/
 
-*{
-    padding: 0px;
-    margin: 0px;
+* {
+    padding: 0;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box; /* Added for better responsiveness */
 }
 
-.backgroundImg{
+.backgroundImg {
     background: url('homeImages/13.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-
 /*---------------------------------------- INDEX ----------------------------------------*/
 
-#headingdiv{
-    width: 90%;
+#headingdiv {
+    width: 80%;
     color: #F9F7F7;
     text-align: center;
-    padding: 70px;
+    padding: 50px 20px; /* Adjusted padding */
     background-color: #222831;
-    margin-top: 90px;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 40px;
+    margin-top: 100px;
+    margin: 50px auto; /* Centered with auto margins */
     border-radius: 20px;
 }
 
-#headingh1{
-    font-size: 10rem;
+#headingh1 {
+    font-size: 8rem; /* Reduced for better scaling */
 }
 
-#headingp{
-    font-size: 4rem;
+#headingp {
+    font-size: 3rem; /* Adjusted for mobile readability */
 }
 
-#homeTable{
-    border: none;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+#homeTable {
+    width: 80%;
+    margin: 50px auto; /* Centered and reduced margin */
     margin-bottom: 100px;
     text-align: center;
 }
 
-.homeColBanner{
+.homeColBanner {
     background-color: #222831;
-    padding: 60px;
+    padding: 40px;
     color: #F9F7F7;
     border-radius: 20px;
 }
 
-
 /*---------------------------------------- HEADER ----------------------------------------*/
-
+/*---------------------------------------- HEADER NAVIGATION ----------------------------------------*/
 
 .header {
-    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #222831;
-    padding: 1em 0;
+    padding: 1.5em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.agileits-logo {
-    float: left;
-    width: 10%;
+.headerlogodiv {
+    flex: 1;
+}
+
+.headerlogodiv img {
+    height: 50px;
+}
+
+.navlinksdiv {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+}
+
+.navlinksdiv ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
 }
 
-.agileits-logo h1 {
-    margin: 0;
+.navlinksdiv ul li {
+    margin: 0 1.5em;
 }
 
-.agileits-logo h1 a {
-    font-size: 1.8em;
-    text-transform: uppercase;
-    color: #FFFFFF;
+.navlinksdiv ul li a {
     text-decoration: none;
-    font-weight: 700;
-    letter-spacing: 5px;
+    color: #F9F7F7;
+    padding: 0.75em 1em;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-.top-nav {
-    float: left;
-    width: 80%;
-    text-align: center;
-    margin: 1.2em 0 0;
-}
-
-.navbar-default {
-    background: none;
-    border: none;
-}
-
-.navbar {
-    margin-bottom: 0;
-}
-
-.navbar-collapse {
-    padding: 0;
-    box-shadow: none;
-}
-
-.navbar-default .navbar-brand {
-    color: #ffffff;
-}
-
-.navbar-nav {
-    float: none;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: #fff;
-    padding: 1em 1.5em;
-}
-
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: #00a6af;
-}
-
-.navbar-nav > li {
-    float: none;
-    border-right: 1px solid #ffffff;
-    display: inline-block;
-}
-
-.navbar-nav li:last-child {
-    border: none;
-}
-
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-    background-color: #919191;
+.navlinksdiv ul li a:hover,
+.navlinksdiv ul li.active a {
     color: #00f2ff;
+    background-color: #393E46;
+    border-radius: 5px;
 }
+
+.navlinksdiv ul li ul.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #393E46;
+    border-radius: 5px;
+    padding: 10px;
+    list-style: none;
+}
+
+.navlinksdiv ul li:hover ul.dropdown-menu {
+    display: block;
+}
+
+.navlinksdiv ul li ul.dropdown-menu li a {
+    display: block;
+    padding: 0.5em 1em;
+    color: #F9F7F7;
+}
+
+.navlinksdiv ul li ul.dropdown-menu li a:hover {
+    background-color: #00ADB5;
+    color: white;
+}
+
+.rightlinksdiv {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.auth-links ul.auth-menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+}
+
+.auth-links ul.auth-menu li a {
+    color: #F9F7F7;
+    text-decoration: none;
+    padding: 0.75em 1em;
+    transition: color 0.3s ease;
+}
+
+.auth-links ul.auth-menu li a:hover {
+    color: #00ADB5;
+}
+
+/*---------------------------------------- Responsive Styles ----------------------------------------*/
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navlinksdiv {
+        width: 100%;
+    }
+
+    .navlinksdiv ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .rightlinksdiv {
+        width: 100%;
+        margin-top: 1em;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .navlinksdiv ul li {
+        margin: 0.75em 0;
+    }
+
+    .auth-links ul.auth-menu {
+        flex-direction: column;
+        gap: 0.75em;
+    }
+}
+
 
 
 /*---------------------------------------- FOOTER ----------------------------------------*/
 
-
 .footer {
-    text-align: center;
-    color: #F9F7F7;
-    background: #222831;
-    font-size: 1em;
+    color: white;
     padding: 30px;
+    text-align: center;
+    background-color: #222831;
 }
-
 
 /*---------------------------------------- ABOUT ----------------------------------------*/
 
-
-.aboutdiv{
-    width: 90%;
-    color: #F9F7F7;
+.aboutdiv {
+    color: white;
+    width: 80%;
+    padding: 50px 100px;
+    margin: 50px auto;
     text-align: justify;
-    line-height: 30px;
-    padding-top: 70px;
-    padding-bottom: 70px;
-    padding-left: 150px;
-    padding-right: 150px;
+    line-height: 1.6;
     background-color: #222831;
-    margin-top: 90px;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 50px;
     border-radius: 20px;
-}
-.abouth1{
-    text-align: center;
+    line-height: 30px;
 }
 
+.abouth1 {
+    text-align: center;
+    font-size: 2.5rem; /* Responsive heading size */
+}
 
 /*---------------------------------------- SERVICES ----------------------------------------*/
 .servicesdiv {
-    width: 90%;
+    width: 80%;
     color: #F9F7F7;
     text-align: center;
     line-height: 1.5;
-    padding: 70px 150px 100px;
+    padding: 50px 50px;
     background-color: #222831;
-    margin: 90px auto 70px auto;
+    margin: 50px auto;
     border-radius: 20px;
 }
 
@@ -295,227 +332,78 @@
     }
 }
 
-
-
 /*---------------------------------------- LOGIN ----------------------------------------*/
 
 .logindiv {
-    width: 90%;
-    color: #F9F7F7;
-    text-align: center;
-    line-height: 1.5;
-    padding: 70px 150px 100px;
+    width: 80%;
+    padding: 50px 20px;
+    margin: 50px auto;
     background-color: #222831;
-    margin: 90px auto 70px auto;
     border-radius: 20px;
 }
 
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-h3 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-}
-
 .form-body {
-    width: 48%;
-    margin: auto auto;
+    width: 100%;
+    margin: 20px auto;
 }
 
 .form-input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #EEEEEE;
-    background-color: #393E46;
-    color: #F9F7F7; 
-    font-size: 1em;
 }
-
-.forgot-password {
-    text-align: right;
-}
-
-.btn-submit {
-    display: inline-block;
-    padding: 10px 20px; 
-    background-color: #00ADB5; 
-    color: #FFFFFF; 
-    text-decoration: none;
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-    background-color: #007B84;
-}
-
-p {
-    margin-top: 20px;
-}
-
-p a {
-    text-decoration: underline;
-}
-
-p a:hover {
-    text-decoration: none;
-}
-
-
-
-
-/*---------------------------------------- Responsive Styling ----------------------------------------*/
 
 @media (max-width: 768px) {
-    .form-container {
+    .form-body {
         width: 100%;
-        padding: 20px;
+        padding: 0 20px;
     }
 }
-
 
 /*---------------------------------------- CONTACT ----------------------------------------*/
 
 .contactdiv {
-    text-align: center;
+    width: 80%;
+    padding: 50px 20px;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 70px 150px;
     background-color: #222831;
-    color: #F9F7F7;
-    margin: 90px auto;
     border-radius: 20px;
-    width: 90%;
 }
 
 .contactinfocol, .messagecol {
     width: 100%;
-    margin-bottom: 20px;
 }
 
-.contactinfocol h3, .messagecol h3 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-.contact-info-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.contact-info-list li {
-    margin-bottom: 10px;
-}
-
-.contact-info-list i {
-    margin-right: 10px;
-    color: #00ADB5;
-}
-
-.messagecol input[type="text"],
-.messagecol input[type="email"],
-.messagecol textarea {
+.messagecol input, .messagecol textarea {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #EEEEEE;
     background-color: #393E46;
-    color: #F9F7F7;
+    border: 1px solid #EEEEEE;
 }
-
-.messagecol textarea {
-    height: 150px;
-}
-
-.btn1 {
-    display: inline-block;
-    margin-top: 1em;
-    padding: 10px 20px;
-    background-color: #00ADB5;
-    color: #FFFFFF;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn1:hover {
-    background-color: #007B84;
-}
-
 
 /*---------------------------------------- BOOKING FORM ----------------------------------------*/
 
 .bookingdiv {
-    width: 90%;
-    color: #F9F7F7;
-    text-align: center;
-    line-height: 1.5;
-    padding: 70px 150px 100px;
+    width: 80%;
+    padding: 50px 20px;
+    margin: 50px auto;
     background-color: #222831;
-    margin: 90px auto 70px auto;
     border-radius: 20px;
 }
 
-.bookingformdiv{
-    margin: auto auto;
-    text-align: left;
-    width: 50%;
-}
-
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-.form-control {
+.bookingformdiv {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #EEEEEE;
-    background-color: #393E46;
-    color: #F9F7F7;
-    font-size: 1em;
+    padding: 20px;
 }
 
-.btn-submit {
-    display: inline-block;
-    padding: 10px 20px; 
-    background-color: #00ADB5; 
-    color: #FFFFFF; 
-    text-decoration: none;
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease;
+.btndiv {
+    text-align: center;
 }
 
-.btn-submit:hover {
-    background-color: #007B84;
-}
-
-textarea.form-control {
-    height: 150px;
-    resize: none;
-}
-
-formlable {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-size: 1em;
-    color: #F9F7F7;
-}
 
 
 

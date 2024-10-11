@@ -3,9 +3,11 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 
-if (strlen($_SESSION['obbsuid'] == 0)) {
+// Redirect if not logged in
+if (strlen($_SESSION['obbsuid']) == 0) {
     header('location:logout.php');
 } else {
+    // Handle form submission
     if (isset($_POST['submit'])) {
         $bid = $_GET['bookid'];
         $uid = $_SESSION['obbsuid'];
@@ -19,8 +21,9 @@ if (strlen($_SESSION['obbsuid'] == 0)) {
         $bookingid = mt_rand(100000000, 999999999);
 
         // Insert query
-        $sql = "INSERT INTO tblbooking (BookingID, ServiceID, UserID, BookingFrom, BookingTo, EventType, Numberofguest, Message, stateId, cityName)
-                VALUES (:bookingid, :bid, :uid, :bookingfrom, :bookingto, :eventtype, :nop, :message, :stateid, :cityname)";
+        $sql = "INSERT INTO tblbooking 
+            (BookingID, ServiceID, UserID, BookingFrom, BookingTo, EventType, Numberofguest, Message, stateId, cityName)
+            VALUES (:bookingid, :bid, :uid, :bookingfrom, :bookingto, :eventtype, :nop, :message, :stateid, :cityname)";
         
         $query = $dbh->prepare($sql);
         $query->bindParam(':bookingid', $bookingid, PDO::PARAM_STR);
@@ -34,7 +37,7 @@ if (strlen($_SESSION['obbsuid'] == 0)) {
         $query->bindParam(':stateid', $stateid, PDO::PARAM_STR);
         $query->bindParam(':cityname', $cityname, PDO::PARAM_STR);
 
-        // Execute and check the insertion
+        // Execute the query and check for success
         if ($query->execute()) {
             echo '<script>alert("Your Booking Request Has Been Sent. We Will Contact You Soon.")</script>';
             echo "<script>window.location.href ='services.php'</script>";
@@ -43,6 +46,7 @@ if (strlen($_SESSION['obbsuid'] == 0)) {
         }
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,27 +71,35 @@ if (strlen($_SESSION['obbsuid'] == 0)) {
                 }
             });
         }
-    </script>
 
+        // Function to clear the form
+        function clearForm() {
+            document.getElementById('bookingForm').reset();
+        }
+    </script>
 </head>
 
 <body>
+    <!-- Include header -->
     <?php include_once('includes/header.php'); ?>
 
     <div class="backgroundImg">
         <div class="bookingdiv">
             <h1>Book Services</h1>
             <div class="bookingformdiv">
-                <form method="post" action="">
-                    <!-- Booking From -->
-                    <input type="date" class="form-control" name="bookingdate" placeholder="Booking Date">
+                <form id="bookingForm" method="post" action="">
 
-                    <!-- Booking To -->
-                    <input type="time" class="form-control" name="bookingtime" placeholder="Booking Time">
+                    <!-- Booking From and To -->
+                    <label class="formlable">Booking Date</label>
+                    <input type="date" class="form-control" name="bookingdate" required>
+
+                    <label class="formlable">Booking Time</label>
+                    <input type="time" class="form-control" name="bookingtime" required>
 
                     <!-- Event Type -->
-                    <select class="form-control" name="servicetype" required="true" placeholder="Service Type">
-                        <option value="">Choose Event Type</option>
+                    <label class="formlable">Type of Service</label>
+                    <select class="form-control" name="eventtype" required>
+                        <option value="">Choose a Service</option>
                         <?php
                         $sql2 = "SELECT * FROM tbleventtype";
                         $query2 = $dbh->prepare($sql2);
@@ -99,10 +111,12 @@ if (strlen($_SESSION['obbsuid'] == 0)) {
                     </select>
 
                     <!-- Number of Guests -->
-                    <input type="number" class="form-control" style="font-size: 20px" required="true" name="nop" min="1" placeholder="Number of Guests">
+                    <label class="formlable">Number of Guests</label>
+                    <input type="number" class="form-control" name="nop" min="1" required>
 
-                    <!-- State -->
-                    <select class="form-control" onChange="getcities(this.value);" name="state" id="state" required="true">
+                    <!-- State and City Selection -->
+                    <label class="formlable">State</label>
+                    <select class="form-control" onChange="getcities(this.value);" name="state" id="state" required>
                         <option value="">Choose State</option>
                         <?php
                         $sql3 = "SELECT * FROM states";
@@ -114,21 +128,27 @@ if (strlen($_SESSION['obbsuid'] == 0)) {
                         <?php } ?>
                     </select>
 
-                    <!-- City -->
-                    <select class="form-control" name="city-list" id="city-list" required="true">
+                    <label class="formlable">City</label>
+                    <select class="form-control" name="city-list" id="city-list" required>
                         <option value="">Select City</option>
                     </select>
 
                     <!-- Message -->
-                    <textarea class="form-control" name="message" style="font-size: 20px"></textarea>
-					<br>
-                    <!-- Submit Button -->
-                    <button type="submit" name="submit" class="btn btn-primary mt-3">Submit</button>
+                    <label class="formlable">Message (optional)</label>
+                    <textarea class="form-control" name="message" rows="4"></textarea>
+
+                    <!-- Submit and Clear Buttons -->
+                    <div class="btndiv">
+                        <button type="button" onclick="clearForm()" class="btnClear">Clear</button>
+                        <button type="submit" name="submit" class="btnSubmit">Submit</button>
+                    </div>
+                    
                 </form>
             </div>
         </div>
     </div>
 
+    <!-- Include footer -->
     <?php include_once('includes/footer.php'); ?>
 </body>
 
