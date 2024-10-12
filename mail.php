@@ -51,7 +51,6 @@ if(isset($_POST['submit'])) {
                 <!-- Contact Info -->
                 <div class="contactinfocol">
                     <h3>Contact Us</h3>
-                    <br>
                     <?php
                     $sql = "SELECT * FROM tblpage WHERE PageType='contactus'";
                     $query = $dbh->prepare($sql);

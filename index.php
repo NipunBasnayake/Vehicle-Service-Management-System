@@ -28,26 +28,39 @@ include('includes/dbconnection.php');
             <h1 id="headingh1">Perera Vehicle Service</h1>
             <p id="headingp">Your One-Stop Auto Care Solution</p>
         </div>
-        <div>
-            <table id="homeTable">
-                <tr>
-                    <td class="homeColBanner">
-                        <h1>Comprehensive Vehicle Maintenance</h1>
-                        <br>
-                        <h4>We provide full service from routine maintenance to major repairs, keeping your vehicle running smoothly.</h4>
-                    </td>
-                    <td></td>
-                    <td class="homeColBanner">
-                        <h1>Trust Our Highly Certified Technicians</h1>
-                        <br>
-                        <h4>Our experienced technicians are here to help with all your automotive needs, ensuring quality service every time.</h4>
-                    </td>
-                </tr>
-            </table>
+    </div>
+
+    <div class="services-section">
+        <div class="service-item">
+            <h2>Comprehensive Vehicle Maintenance</h2>
+            <p>We provide full service from routine maintenance to major repairs, keeping your vehicle running smoothly.</p>
+        </div>
+        <div class="service-item">
+            <h2>Trust Our Highly Certified Technicians</h2>
+            <p>Our experienced technicians are here to help with all your automotive needs, ensuring quality service every time.</p>
         </div>
     </div>
 
+    <button id="scrollTopBtn" title="Go to top">
+        <i class="fa fa-arrow-up">^</i>
+    </button>
+
     <?php include_once('includes/footer.php');?>
+
+    <script>
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $('#scrollTopBtn').fadeIn();
+            } else {
+                $('#scrollTopBtn').fadeOut();
+            }
+        });
+
+        $('#scrollTopBtn').click(function() {
+            $('html, body').animate({ scrollTop: 0 }, 600);
+            return false;
+        });
+    </script>
 </body>
 
 </html>

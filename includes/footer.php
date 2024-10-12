@@ -17,7 +17,6 @@
                         &emsp;&emsp;|&emsp;&emsp;
                         <i aria-hidden="true"></i> +<?php echo htmlentities($row->MobileNumber); ?>
                     </p>
-                    <br>
                     <p>© 2024 Perera Vehicle Service Centre &emsp;|&emsp; All rights reserved</p>
                 </div>
 
