@@ -7,6 +7,10 @@ body {
     background: #ffffff;
 }
 
+h1, h2, h3, p, a, input, textarea, button, th, td {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 h2 {
     color: #222831;
 }
@@ -681,11 +685,9 @@ table td .badge-primary {
     .table-container {
         width: 95%;
         padding: 20px;
-        /* Decreased padding for mobile */
     }
 
     .page-title {
         font-size: 2rem;
-        /* Smaller title on mobile */
     }
 }
