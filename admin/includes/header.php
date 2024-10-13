@@ -1,10 +1,15 @@
 <?php
-session_start();
-error_reporting(0);
+// Check if a session is already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+error_reporting(0); // Consider removing this line in a production environment
 include('includes/dbconnection.php');
 
+// Redirect to logout page if the session variable is not set
 if (strlen($_SESSION['odmsaid']) == 0) {
     header('location:logout.php');
+    exit(); // Always exit after redirecting
 } else {
 ?>
 
@@ -12,6 +17,7 @@ if (strlen($_SESSION['odmsaid']) == 0) {
     <div class="content-header d-flex justify-content-between align-items-center">
         <div class="content-header-section">
             <ul class="adminNavBar">
+                <li><a href="dashboard.php">Dashboard</a></li>
                 <li>
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
                         Service <span class="caret"></span>
@@ -21,10 +27,8 @@ if (strlen($_SESSION['odmsaid']) == 0) {
                         <li><a href="manage-services.php">Manage Services</a></li>
                     </ul>
                 </li>
-
                 <li><a href="aboutus.php">About Us</a></li>
                 <li><a href="contactus.php">Contact Us</a></li>
-
                 <li>
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
                         Booking <span class="caret"></span>
@@ -36,7 +40,6 @@ if (strlen($_SESSION['odmsaid']) == 0) {
                         <li><a href="all-booking.php">All Bookings</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
                         Messages <span class="caret"></span>
@@ -62,9 +65,8 @@ if (strlen($_SESSION['odmsaid']) == 0) {
                 if ($query->rowCount() > 0) {
                     foreach ($results as $row) {
                 ?>
-                        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" 
-                            data-toggle="dropdown" aria-expanded="false">
-                            <?php echo $row->AdminName; ?>
+                        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <?php echo htmlentities($row->AdminName); ?>
                         </button>
                 <?php
                     }
@@ -88,8 +90,8 @@ if (strlen($_SESSION['odmsaid']) == 0) {
 </header>
 
 <style>
-    .btn-group{
-        margin-right: 30px;;
+    .btn-group {
+        margin-right: 30px;
     }
 
     .adminNavBar {

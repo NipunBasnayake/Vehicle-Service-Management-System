@@ -28,18 +28,16 @@ echo '<script>alert("Contact us has been updated")</script>';
 <!doctype html>
  <html lang="en" class="no-focus"> <!--<![endif]-->
     <head>
- <title>Online Banquet Booking System - Update Contact Us</title>
+ <title>PVSC Admin | Contact Us</title>
+
 <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
 <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 </head>
-    <body>
-        <div id="page-container" class="sidebar-o sidebar-inverse side-scroll page-header-fixed main-content-narrow">
-     
 
-             <?php include_once('includes/sidebar.php');?>
 
-          <?php include_once('includes/header.php');?>
+<body>
+    <?php include_once('includes/header.php'); ?>
 
             <!-- Main Container -->
             <main id="main-container">
@@ -52,15 +50,6 @@ echo '<script>alert("Contact us has been updated")</script>';
                         <div class="col-md-12">
                             <!-- Bootstrap Register -->
                             <div class="block block-themed">
-                                <div class="block-header bg-gd-emerald">
-                                    <h3 class="block-title">Update Contact Us</h3>
-                                    <div class="block-options">
-                                        <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                            <i class="si si-refresh"></i>
-                                        </button>
-                                        <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button>
-                                    </div>
-                                </div>
                                 <div class="block-content">
                                    
                                     <form method="post">

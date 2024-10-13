@@ -38,7 +38,8 @@ echo "<script>window.location.href ='add-services.php'</script>";
 <html lang="en" class="no-focus"> <!--<![endif]-->
 
 <head>
-    <title>Online Banquet Booking System - Add Services</title>
+    <title>PVSC Admin | Add Services</title>
+
     <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
 </head>
 
@@ -51,15 +52,6 @@ echo "<script>window.location.href ='add-services.php'</script>";
             <div class="row">
                 <div class="col-md-12">
                     <div class="block block-themed">
-                        <div class="block-header bg-gd-emerald">
-                            <h3 class="block-title">Add Services</h3>
-                            <div class="block-options">
-                                <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                    <i class="si si-refresh"></i>
-                                </button>
-                                <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button>
-                            </div>
-                        </div>
                         <div class="block-content">
                             <form method="post">
                                 <div class="form-group row">

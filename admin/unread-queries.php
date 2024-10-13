@@ -12,7 +12,7 @@ if (strlen($_SESSION['odmsaid']==0)) {
 <!doctype html>
 <html lang="en" class="no-focus"> <!--<![endif]-->
     <head>
-        <title>Online Banquet Booking System - Unread Queries</title>
+        <title>PVSC Admin | Unread Queries</title>
 
         <link rel="stylesheet" href="assets/js/plugins/datatables/dataTables.bootstrap4.min.css">
 
@@ -20,27 +20,19 @@ if (strlen($_SESSION['odmsaid']==0)) {
 
     </head>
     <body>
-        
-        <div id="page-container" class="sidebar-o sidebar-inverse side-scroll page-header-fixed main-content-narrow">
-           
-           <?php include_once('includes/sidebar.php');?>
-
-          <?php include_once('includes/header.php');?>
+        <?php include_once('includes/header.php'); ?>
 
 
             <!-- Main Container -->
             <main id="main-container">
                 <!-- Page Content -->
                 <div class="content">
-                    <h2 class="content-heading">Unread Queries</h2>
+                    <h2 class="content-heading">Unread Messages</h2>
 
                    
 
                     <!-- Dynamic Table Full Pagination -->
                     <div class="block">
-                        <div class="block-header block-header-default">
-                            <h3 class="block-title">Unread Queries</h3>
-                        </div>
                         <div class="block-content block-content-full">
                             <!-- DataTables init on table by adding .js-dataTable-full-pagination class, functionality initialized in js/pages/be_tables_datatables.js -->
                           

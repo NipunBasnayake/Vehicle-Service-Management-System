@@ -8,23 +8,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
 
+    <style>
+        .dashboard-title {
+            font-size: 3rem;
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .sub-title {
+            font-size: 2rem;
+            color: #6c757d;
+        }
+
+        .title-icon {
+            margin-bottom: 20px;
+            font-size: 4rem;
+        }
+
+        .full-height {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
 </head>
 
 <body>
-    <!-- Include Header -->
     <?php include_once('includes/header.php'); ?>
 
-    <!-- Optional Content -->
-    <div class="container mt-5">
-        <center><h1>Welcome to Admin Dashboard</h1></center>
-        
+    <div class="container full-height text-center">
+        <i class="fas fa-cogs title-icon"></i>
+        <h1 class="dashboard-title">Welcome to Admin Dashboard</h1>
+        <h2 class="sub-title">Perera Vehicle Service Centre</h2>
     </div>
 </body>
 
-<!-- jQuery (required for Bootstrap’s JavaScript) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

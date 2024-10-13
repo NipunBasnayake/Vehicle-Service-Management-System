@@ -36,7 +36,8 @@ echo '<script>alert("Your current password is wrong")</script>';
 <!doctype html>
  <html lang="en" class="no-focus"> <!--<![endif]-->
     <head>
- <title>Online Banquet Booking System - Change Password</title>
+ <title>PVSC Admin | Change Password</title>
+ 
 <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
 <script type="text/javascript">
 function checkpass()
@@ -53,12 +54,7 @@ return true;
 </script>
 </head>
     <body>
-        <div id="page-container" class="sidebar-o sidebar-inverse side-scroll page-header-fixed main-content-narrow">
-     
-
-             <?php include_once('includes/sidebar.php');?>
-
-          <?php include_once('includes/header.php');?>
+    <?php include_once('includes/header.php'); ?>
 
             <!-- Main Container -->
             <main id="main-container">
@@ -71,15 +67,6 @@ return true;
                         <div class="col-md-12">
                             <!-- Bootstrap Register -->
                             <div class="block block-themed">
-                                <div class="block-header bg-gd-emerald">
-                                    <h3 class="block-title">Change Password</h3>
-                                    <div class="block-options">
-                                        <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                                            <i class="si si-refresh"></i>
-                                        </button>
-                                        <button type="button" class="btn-block-option" data-toggle="block-option" data-action="content_toggle"></button>
-                                    </div>
-                                </div>
                                 <div class="block-content">
                                     <form method="post" onsubmit="return checkpass();" name="changepassword">
                                         <div class="form-group row">
