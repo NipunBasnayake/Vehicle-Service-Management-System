@@ -412,7 +412,7 @@ body {
     }
 }
 
-/*---------------------------------------- LOGIN ----------------------------------------*/
+/*---------------------------------------- LOGIN / REGISTER / BOOKING FORMS ----------------------------------------*/
 
 .logindiv {
     z-index: 1;
@@ -440,6 +440,10 @@ h3 {
 .form-body {
     width: 90%;
     margin: auto auto;
+}
+
+#formselect{
+    width: 103%;
 }
 
 .form-input {
@@ -557,95 +561,6 @@ p a:hover {
 .btn1:hover {
     background-color: #007B84;
 }
-
-
-
-/*---------------------------------------- BOOKING FORM ----------------------------------------*/
-/* Container for the booking form */
-.bookingdiv {
-    z-index: 1;
-    max-width: 70%;
-    color: #F9F7F7;
-    text-align: center;
-    line-height: 1.5;
-    padding: 50px;
-    background-color: #222831;
-    margin: 50px auto;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Container for the form itself */
-.bookingformdiv {
-    margin: auto;
-    text-align: left;
-    width: 80%;
-}
-
-/* Heading style */
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #00ADB5;
-}
-
-/* Form input styles */
-.form-controlbo {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #EEEEEE;
-    background-color: #393E46;
-    color: #F9F7F7;
-    font-size: 1em;
-}
-
-/* Textarea specific styles */
-textarea.form-controlbo {
-    height: 100px;
-    resize: none;
-}
-
-/* Button container for alignment */
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-/* Submit button styles */
-.btn-submit {
-    padding: 12px 30px;
-    background-color: #00ADB5;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 48%;
-}
-
-.btn-submit:hover {
-    background-color: #007B84;
-}
-
-/* Clear button styles */
-.btn-clear {
-    padding: 12px 30px;
-    background-color: #FF3E3E;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 48%;
-}
-
-.btn-clear:hover {
-    background-color: #CC2E2E;
-}
-
 
 
 

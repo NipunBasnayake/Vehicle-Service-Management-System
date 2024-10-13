@@ -75,59 +75,38 @@ if (isset($_POST['submit'])) {
     <?php include_once('includes/header.php'); ?>
 
     <div class="backgroundImg">
-        <div class="bookingdiv">
-            <h1>Book Services</h1>
-            <div class="bookingformdiv">
-                <form method="post" id="bookingForm">
-                    <input type="date" class="form-controlbo" name="bookingfrom" required>
-                    <input type="date" class="form-controlbo" name="bookingto" required>
+        <div class="logindiv">
+            <h1>Booking Services</h1>
+            <br>
+            <div class="form-body">
+                <form action="">
+                    <input type="date" class="form-input" name="bookingfrom" required="true" placeholder="Date">
+                    <input type="date" class="form-input" name="bookingto" required="true" placeholder="Time">
 
-                    <select class="form-controlbo" name="eventtype" required>
-                        <option value="">Choose Event Type</option>
-                        <?php
-                        $sql2 = "SELECT * FROM tbleventtype";
-                        $query2 = $dbh->prepare($sql2);
-                        $query2->execute();
-                        $result2 = $query2->fetchAll(PDO::FETCH_OBJ);
-                        foreach ($result2 as $row) { ?>
-                            <option value="<?php echo htmlentities($row->EventType); ?>">
-                                <?php echo htmlentities($row->EventType); ?>
-                            </option>
+                    <select type="text" class="form-input" id="formselect" name="eventtype" required="true" >
+						<option value="">Choose Event Type</option>
+						<?php 
+                            $sql2 = "SELECT * from   tbleventtype ";
+                            $query2 = $dbh -> prepare($sql2);
+                            $query2->execute();
+                            $result2=$query2->fetchAll(PDO::FETCH_OBJ);
+                            foreach($result2 as $row)
+                            {          
+                        ?>  
+                        <option value="<?php echo htmlentities($row->EventType);?>"><?php echo htmlentities($row->EventType);?></option>
                         <?php } ?>
-                    </select>
+					</select>
+                    <input type="number" class="form-input" name="nop" placeholder="Num ber of Guests" min="1" required="true" placeholder="Full Name">
+                    <textarea class="form-input" name="message" placeholder= "Message (optional)"></textarea>
 
-                    <input type="number" class="form-controlbo" name="nop" placeholder="Number of Guests" min="1" required>
-                    <textarea class="form-controlbo" name="message" placeholder="Message (optional)"></textarea>
-
-                    <select class="form-controlbo" name="state" onChange="getcities(this.value);" required>
-                        <option value="">Select State</option>
-                        <?php
-                        $sql3 = "SELECT * FROM tblstate";
-                        $query3 = $dbh->prepare($sql3);
-                        $query3->execute();
-                        $result3 = $query3->fetchAll(PDO::FETCH_OBJ);
-                        foreach ($result3 as $row) { ?>
-                            <option value="<?php echo htmlentities($row->ID); ?>">
-                                <?php echo htmlentities($row->StateName); ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-
-                    <select class="form-controlbo" name="city-list" id="city-list" required>
-                        <option value="">Select City</option>
-                    </select>
-
-                    <div class="button-container">
-                        <button type="submit" name="submit" class="btn-submit">Submit</button>
-                        <button type="reset" class="btn-clear" onclick="clearForm()">Clear All</button>
-                    </div>
+                    <button class="btn-submit" name="signup">Clear All</button>
+                    <button class="btn-submit" name="signup">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 
     <script>
-        // JavaScript function to clear the form and show alert
         function clearForm() {
             document.getElementById('bookingForm').reset();
             alert('Form has been cleared!');
