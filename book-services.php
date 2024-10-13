@@ -3,49 +3,62 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 
+// Check if user is logged in
 if (strlen($_SESSION['obbsuid']) == 0) {
     header('location:logout.php');
     exit();
 }
 
 if (isset($_POST['submit'])) {
-    $bid = $_GET['bookid'];
+    // Collect form inputs
     $uid = $_SESSION['obbsuid'];
-    $bookingfrom = $_POST['bookingfrom'];
-    $bookingto = $_POST['bookingto'];
-    $eventtype = $_POST['eventtype'];
-    $nop = $_POST['nop'];
-    $message = $_POST['message'];
-    $stateid = $_POST['state'];
-    $cityname = $_POST['city-list'];
-    $bookingid = mt_rand(100000000, 999999999);
+    $serviceID = $_POST['servicetype']; 
+    $bookingDate = $_POST['bookingdate'];
+    $bookingTime = $_POST['bookingtime'];
+    $eventType = $_POST['eventtype'];
+    $numberOfWheels = $_POST['numberofwheels'];
+    $vehicleNumber = $_POST['vehiclenumber'];
+    $additionalRepairs = $_POST['additionalrepairs'];
+    $message = $_POST['message'] ?? ''; // Optional message
+    $bookingID = mt_rand(100000000, 999999999); // Random Booking ID
+    $status = "Pending";  // Default status
 
-    $sql = "INSERT INTO tblbooking (BookingID, ServiceID, UserID, BookingFrom, BookingTo, EventType, Numberofguest, Message, stateId, cityName)
-            VALUES (:bookingid, :bid, :uid, :bookingfrom, :bookingto, :eventtype, :nop, :message, :stateid, :cityname)";
-    
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':bookingid', $bookingid, PDO::PARAM_STR);
-    $query->bindParam(':bid', $bid, PDO::PARAM_STR);
-    $query->bindParam(':uid', $uid, PDO::PARAM_STR);
-    $query->bindParam(':bookingfrom', $bookingfrom, PDO::PARAM_STR);
-    $query->bindParam(':bookingto', $bookingto, PDO::PARAM_STR);
-    $query->bindParam(':eventtype', $eventtype, PDO::PARAM_STR);
-    $query->bindParam(':nop', $nop, PDO::PARAM_STR);
-    $query->bindParam(':message', $message, PDO::PARAM_STR);
-    $query->bindParam(':stateid', $stateid, PDO::PARAM_STR);
-    $query->bindParam(':cityname', $cityname, PDO::PARAM_STR);
+    try {
+        // SQL query to insert booking data
+        $sql = "INSERT INTO tblbooking (BookingID, ServiceID, UserID, BookDate, BookTime, EventType, 
+                NumberOfWheels, Message, Status) 
+                VALUES (:bookingID, :serviceID, :userID, :bookDate, :bookTime, :eventType, 
+                :numberOfWheels, :message, :status)";
 
-    if ($query->execute()) {
-        echo '<script>alert("Your Booking Request Has Been Sent. We Will Contact You Soon.")</script>';
-        echo "<script>window.location.href ='services.php'</script>";
-    } else {
-        echo '<script>alert("Something Went Wrong. Please try again.")</script>';
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':bookingID', $bookingID, PDO::PARAM_INT);
+        $query->bindParam(':serviceID', $serviceID, PDO::PARAM_INT);
+        $query->bindParam(':userID', $uid, PDO::PARAM_INT);
+        $query->bindParam(':bookDate', $bookingDate, PDO::PARAM_STR);
+        $query->bindParam(':bookTime', $bookingTime, PDO::PARAM_STR);
+        $query->bindParam(':eventType', $eventType, PDO::PARAM_STR);
+        $query->bindParam(':numberOfWheels', $numberOfWheels, PDO::PARAM_STR);
+        $query->bindParam(':message', $message, PDO::PARAM_STR);
+        $query->bindParam(':status', $status, PDO::PARAM_STR);
+
+        // Execute and check if the query was successful
+        if ($query->execute()) {
+            echo '<script>alert("Your Booking Request Has Been Sent. We Will Contact You Soon.")</script>';
+            echo "<script>window.location.href ='services.php'</script>";
+        } else {
+            echo '<script>alert("Something went wrong. Please try again.")</script>';
+        }
+    } catch (PDOException $e) {
+        // Display detailed error message (for debugging)
+        echo "Error: " . $e->getMessage();
     }
 }
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Online Banquet Booking System | Book Services</title>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -53,19 +66,6 @@ if (isset($_POST['submit'])) {
     <link href="css/font-awesome.css" rel="stylesheet">
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
-
-    <script>
-        function getcities(val) {
-            $.ajax({
-                type: "POST",
-                url: "get_city.php",
-                data: 'state_id=' + val,
-                success: function (data) {
-                    $("#city-list").html(data);
-                }
-            });
-        }
-    </script>
 </head>
 
 <body>
@@ -76,39 +76,45 @@ if (isset($_POST['submit'])) {
             <h1>Booking Services</h1>
             <br>
             <div class="form-body">
-                <form action="">
-                    <input type="date" class="form-input" name="bookingfrom" required="true" placeholder="Date">
-                    <input type="date" class="form-input" name="bookingto" required="true" placeholder="Time">
+                <form method="post">
+                    <input type="date" class="form-input" name="bookingdate" required="true" placeholder="Booking Date">
+                    <input type="time" class="form-input" name="bookingtime" required="true" placeholder="Booking Time">
 
-                    <select type="text" class="form-input" id="formselect" name="eventtype" required="true" >
-						<option value="">Choose Event Type</option>
-						<?php 
-                            $sql2 = "SELECT * from   tbleventtype ";
-                            $query2 = $dbh -> prepare($sql2);
+                    <select class="form-input" name="servicetype" required="true" id="formselect">
+                        <option value="">Choose Service</option>
+                        <?php 
+                            $sql2 = "SELECT * FROM tblservice";
+                            $query2 = $dbh->prepare($sql2);
                             $query2->execute();
-                            $result2=$query2->fetchAll(PDO::FETCH_OBJ);
-                            foreach($result2 as $row)
-                            {          
-                        ?>  
-                        <option value="<?php echo htmlentities($row->EventType);?>"><?php echo htmlentities($row->EventType);?></option>
-                        <?php } ?>
-					</select>
-                    <input type="number" class="form-input" name="nop" placeholder="Num ber of Guests" min="1" required="true" placeholder="Full Name">
-                    <textarea class="form-input" name="message" placeholder= "Message (optional)"></textarea>
+                            $result2 = $query2->fetchAll(PDO::FETCH_OBJ);
 
-                    <button class="btn-submit" name="signup">Clear All</button>
-                    <button class="btn-submit" name="signup">Submit</button>
+                            foreach ($result2 as $row) {          
+                        ?>  
+                            <option value="<?php echo htmlentities($row->ID); ?>">
+                                <?php echo htmlentities($row->ServiceName); ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+
+                    <select class="form-input" name="numberofwheels" required="true" id="formselect">
+                        <option value="">Select Vehicle Type</option>
+                        <option value="2 Wheeler">2 Wheeler</option>
+                        <option value="3 Wheeler">3 Wheeler</option>
+                        <option value="4 Wheeler">4 Wheeler</option>
+                        <option value="6 Wheeler">6 Wheeler</option>
+                        <option value="10 Wheeler">10 Wheeler</option>
+                    </select>
+
+                    <input type="text" class="form-input" name="vehiclenumber" placeholder="Vehicle Number" required="true">
+                    <input type="text" class="form-input" name="additionalrepairs" placeholder="Additional Repairs (optional)">
+                    <textarea class="form-input" name="message" placeholder="Message (optional)"></textarea>
+
+                    <button class="btn-submit" type="reset">Clear All</button>
+                    <button class="btn-submit" type="submit" name="submit">Submit</button>
                 </form>
             </div>
         </div>
     </div>
-
-    <script>
-        function clearForm() {
-            document.getElementById('bookingForm').reset();
-            alert('Form has been cleared!');
-        }
-    </script>
 
     <?php include_once('includes/footer.php'); ?>
 </body>
