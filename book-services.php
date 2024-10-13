@@ -20,7 +20,6 @@ if (isset($_POST['submit'])) {
     $cityname = $_POST['city-list'];
     $bookingid = mt_rand(100000000, 999999999);
 
-    // Insert query
     $sql = "INSERT INTO tblbooking (BookingID, ServiceID, UserID, BookingFrom, BookingTo, EventType, Numberofguest, Message, stateId, cityName)
             VALUES (:bookingid, :bid, :uid, :bookingfrom, :bookingto, :eventtype, :nop, :message, :stateid, :cityname)";
     
@@ -36,7 +35,6 @@ if (isset($_POST['submit'])) {
     $query->bindParam(':stateid', $stateid, PDO::PARAM_STR);
     $query->bindParam(':cityname', $cityname, PDO::PARAM_STR);
 
-    // Execute and check the insertion
     if ($query->execute()) {
         echo '<script>alert("Your Booking Request Has Been Sent. We Will Contact You Soon.")</script>';
         echo "<script>window.location.href ='services.php'</script>";
@@ -56,7 +54,6 @@ if (isset($_POST['submit'])) {
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
 
-    <!-- Fetch cities based on selected state -->
     <script>
         function getcities(val) {
             $.ajax({

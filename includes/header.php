@@ -6,7 +6,7 @@
 <div class="header">
 
     <div class="headerlogodiv">
-        <a href="index.php"><img src="homeImages/logo.png" alt="Logo" style="height: 50px;"/></a>
+        <a href="index.php"><img src="images/logo.png" alt="Logo" style="height: 50px;"/></a>
     </div>
 
     <div class="navlinksdiv">
