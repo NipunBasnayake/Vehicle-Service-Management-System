@@ -80,97 +80,24 @@ return true;
 </script>
 </head>
 <body>
-	<!-- banner -->
-	<div class="banner jarallax">
-		<div class="agileinfo-dot">
-			<?php include_once('includes/header.php');?>
-			<div class="wthree-heading">
-				<h2>Change Password</h2>
-			</div>
-		</div>
-	</div>
-	<!-- //banner -->
-	<!-- contact -->
-	<div class="contact">
-		<div class="container">
-			<div class="agile-contact-form">
-				
-				<div class="col-md-6 contact-form-right">
-					<div class="contact-form-top">
-						<h3>User Profile </h3>
-					</div>
-					<div class="agileinfo-contact-form-grid">
-						<form method="post" onsubmit="return checkpass();" name="changepassword">
-							 <div class="form-group row">
-                                    <label class="col-form-label col-md-4">Current Password</label>
-                                    <div class="col-md-10">
-                                        <input type="password" class="form-control" style="font-size: 20px" required="true" name="currentpassword">
-                                    </div>
-                                </div>
-                                                <div class="form-group row">
-                                    <label class="col-form-label col-md-4">New Password</label>
-                                    <div class="col-md-10">
-                                        <input type="password" class="form-control"  required="true" name="newpassword" style="font-size: 20px">
-                                    </div>
-                                </div>
-                                                 <div class="form-group row">
-                                    <label class="col-form-label col-md-4">Confirm Password</label>
-                                    <div class="col-md-10">
-                                        <input type="password" class="form-control"  required="true" name="confirmpassword" style="font-size: 20px" >
-                                    </div>
-                                </div>
-                                                
-                                              <br>
-                                                <div class="tp">
-                                                    
-                                                     <button type="submit" class="btn btn-primary" name="submit">Change</button>
-                                                </div>
-                                            </form>
+	<?php include_once('includes/header.php');?>
+	
+	<div class="backgroundImg">
+        <div class="logindiv">
+			<h1>Change Password</h1>
+			<br>
+			<div class="form-body">
+				<form method="post" onsubmit="return checkpass();" name="changepassword">
+                    <input type="password" class="form-input" required="true" name="currentpassword" placeholder="Old Password">
+                    <input type="password" class="form-input" required="true" name="newpassword" placeholder="New Password">
+                    <input type="password" class="form-input" required="true" name="confirmpassword" placeholder="Confirm Password">
+                    <button type="submit" class="btn-submit" name="submit">Change</button>
+                </form>
+	        </div>
+        </div>
+    </div>
 
-					</div>
-				</div>
-				
-				<div class="clearfix"> </div>
-			</div>
-			
-		
-		</div>
-	</div>
-	<!-- //contact -->
 	<?php include_once('includes/footer.php');?>
-	<!-- jarallax -->
-	<script src="js/jarallax.js"></script>
-	<script src="js/SmoothScroll.min.js"></script>
-	<script type="text/javascript">
-		/* init Jarallax */
-		$('.jarallax').jarallax({
-			speed: 0.5,
-			imgWidth: 1366,
-			imgHeight: 768
-		})
-	</script>
-	<!-- //jarallax -->
-	<script src="js/SmoothScroll.min.js"></script>
-	<script type="text/javascript" src="js/move-top.js"></script>
-	<script type="text/javascript" src="js/easing.js"></script>
-	<!-- here stars scrolling icon -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-				};
-			*/
-								
-			$().UItoTop({ easingType: 'easeOutQuart' });
-								
-			});
-	</script>
-<!-- //here ends scrolling icon -->
-<script src="js/modernizr.custom.js"></script>
 
 </body>	
 </html><?php }  ?>
