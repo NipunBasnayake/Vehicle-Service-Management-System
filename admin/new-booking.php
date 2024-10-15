@@ -4,39 +4,45 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include('includes/dbconnection.php');
 
-if (strlen($_SESSION['obbsuid']) == 0) {
-    header('location:logout.php');
+// Check if user is logged in
+if (strlen($_SESSION['odmsaid']) == 0) {
+    header('location:login.php');
     exit();
 } else {
-    $uid = $_SESSION['obbsuid'];
+    $uid = $_SESSION['odmsaid'];
 
-    $sql = "SELECT 
-                tblbooking.BookingID,
-                tbluser.FullName,
-                tblbooking.BookDate,
-                tblbooking.BookTime,
-                tblservice.ServiceName,
-                tblbooking.vehicleNumber,
-                tblbooking.NumberOfWheels,
-                tblbooking.additional,
-                tblbooking.Message,
-                tblbooking.Status
-            FROM 
-                tblbooking 
-            JOIN 
-                tbluser ON tbluser.ID = tblbooking.UserID 
-            JOIN 
-                tblservice ON tblservice.ID = tblbooking.ServiceID 
-            WHERE 
-                tblbooking.Status = 'Pending' AND tblbooking.UserID = :userid";
+    // Prepare the SQL query to fetch new bookings
+// Modify the SQL query to fetch all new bookings (no UserID filter)
+$sql = "SELECT 
+            tblbooking.BookingID,
+            tbluser.FullName,
+            tblbooking.BookDate,
+            tblbooking.BookTime,
+            tblservice.ServiceName,
+            tblbooking.vehicleNumber,
+            tblbooking.NumberOfWheels,
+            tblbooking.additional,
+            tblbooking.Message,
+            tblbooking.Status
+        FROM 
+            tblbooking 
+        JOIN 
+            tbluser ON tbluser.ID = tblbooking.UserID 
+        JOIN 
+            tblservice ON tblservice.ID = tblbooking.ServiceID 
+        WHERE 
+            tblbooking.Status = 'Pending'";
 
     $query = $dbh->prepare($sql);
-    $query->bindParam(':userid', $uid, PDO::PARAM_INT);
 
+try {
     $query->execute();
+} catch (Exception $e) {
+    echo "Query failed: " . $e->getMessage();
+    exit();
+}
 
     $results = $query->fetchAll(PDO::FETCH_OBJ);
-    $cnt = 1;
 ?>
 
 <!doctype html>
@@ -50,7 +56,6 @@ if (strlen($_SESSION['obbsuid']) == 0) {
         <div class="content">
             <h2 class="content-heading">New Bookings</h2>
 
-            <!-- Back Button -->
             <div class="mb-3">
                 <a href="dashboard.php" class="btn btn-primary">Back to Dashboard</a>
             </div>
@@ -115,3 +120,4 @@ if (strlen($_SESSION['obbsuid']) == 0) {
 
 <?php
 }
+?>

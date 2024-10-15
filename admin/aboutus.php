@@ -25,7 +25,7 @@ echo '<script>alert("About us has been updated")</script>';
 
 
 <!doctype html>
- <html lang="en" class="no-focus"> <!--<![endif]-->
+ <html lang="en" class="no-focus">
 
 <head>
     <title>PVSC Admin | About Us</title>

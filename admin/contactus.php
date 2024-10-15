@@ -26,7 +26,7 @@ echo '<script>alert("Contact us has been updated")</script>';
   }
   ?>
 <!doctype html>
- <html lang="en" class="no-focus"> <!--<![endif]-->
+ <html lang="en" class="no-focus"> 
     <head>
  <title>PVSC Admin | Contact Us</title>
 
@@ -39,31 +39,26 @@ echo '<script>alert("Contact us has been updated")</script>';
 <body>
     <?php include_once('includes/header.php'); ?>
 
-            <!-- Main Container -->
             <main id="main-container">
-                <!-- Page Content -->
                 <div class="content">
-                
-                    <!-- Register Forms -->
                     <h2 class="content-heading">Update Contact Us</h2>
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- Bootstrap Register -->
                             <div class="block block-themed">
                                 <div class="block-content">
                                    
                                     <form method="post">
                                 <?php
-
-$sql="SELECT * from  tblpage where PageType='contactus'";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $row)
-{               ?>        
+                                    $sql="SELECT * from  tblpage where PageType='contactus'";
+                                    $query = $dbh -> prepare($sql);
+                                    $query->execute();
+                                    $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                    $cnt=1;
+                                    if($query->rowCount() > 0)
+                                    {
+                                    foreach($results as $row)
+                                    {
+                                ?>        
                                         <div class="form-group row">
                                             <label class="col-12" for="register1-email">Page Title:</label>
                                             <div class="col-12">
@@ -100,20 +95,13 @@ foreach($results as $row)
 
                                 </div>
                             </div>
-                            <!-- END Bootstrap Register -->
                         </div>
-                        
-                       </div>
+                    </div>
                 </div>
-                <!-- END Page Content -->
             </main>
-            <!-- END Main Container -->
 
-          <?php include_once('includes/footer.php');?>
+        <?php include_once('includes/footer.php');?>
         </div>
-        <!-- END Page Container -->
-
-        <!-- Codebase Core JS -->
         <script src="assets/js/core/jquery.min.js"></script>
         <script src="assets/js/core/popper.min.js"></script>
         <script src="assets/js/core/bootstrap.min.js"></script>

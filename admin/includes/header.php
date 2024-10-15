@@ -1,15 +1,13 @@
 <?php
-// Check if a session is already started
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-error_reporting(0); // Consider removing this line in a production environment
+error_reporting(0);
 include('includes/dbconnection.php');
 
-// Redirect to logout page if the session variable is not set
 if (strlen($_SESSION['odmsaid']) == 0) {
     header('location:logout.php');
-    exit(); // Always exit after redirecting
+    exit();
 } else {
 ?>
 

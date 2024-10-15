@@ -22,7 +22,7 @@ $query->execute();
 
   ?>
 <!doctype html>
-<html lang="en" class="no-focus"> <!--<![endif]-->
+<html lang="en" class="no-focus">
     <head>
         <title>PVSC Admin | Manage Services</title>
 
@@ -34,18 +34,12 @@ $query->execute();
     <body>
         <?php include_once('includes/header.php'); ?>
 
-            <!-- Main Container -->
             <main id="main-container">
-                <!-- Page Content -->
                 <div class="content">
                     <h2 class="content-heading">Manage Services</h2>
 
-                   
-
-                    <!-- Dynamic Table Full Pagination -->
                     <div class="block">
                         <div class="block-content block-content-full">
-                            <!-- DataTables init on table by adding .js-dataTable-full-pagination class, functionality initialized in js/pages/be_tables_datatables.js -->
                             <table class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination">
                                 <thead>
                                     <tr>
@@ -79,15 +73,13 @@ $query->execute();
                                     </tr>
                                     <?php $cnt=$cnt+1;}} ?> 
                                 
-                                
-                                  
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </main>
-           <?php include_once('includes/footer.php');?>
+        <?php include_once('includes/footer.php');?>
         </div>
 
         <script src="assets/js/core/jquery.min.js"></script>

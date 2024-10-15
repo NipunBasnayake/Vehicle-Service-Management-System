@@ -85,10 +85,9 @@ if (isset($_POST['submit'])) {
                     <input type="date" class="form-input" name="bookingdate" required placeholder="Booking Date">
                     <input type="time" class="form-input" name="bookingtime" required placeholder="Booking Time">
 
-                    <select class="form-input" name="servicetype" required>
+                    <select id="formselect" class="form-input" name="servicetype" required>
                         <option value="">Choose Service</option>
                         <?php 
-                            // Fetch available services from the database
                             $sql2 = "SELECT * FROM tblservice";
                             $query2 = $dbh->prepare($sql2);
                             $query2->execute();
@@ -102,7 +101,7 @@ if (isset($_POST['submit'])) {
                         <?php } ?>
                     </select>
 
-                    <select class="form-input" name="numberofwheels" required>
+                    <select id="formselect" class="form-input" name="numberofwheels" required>
                         <option value="">Select Vehicle Type</option>
                         <option value="2 Wheeler">2 Wheeler</option>
                         <option value="3 Wheeler">3 Wheeler</option>
@@ -112,13 +111,8 @@ if (isset($_POST['submit'])) {
                     </select>
 
                     <input type="text" class="form-input" name="vehiclenumber" required placeholder="Vehicle Number">
-                    
-                    <!-- Optional additional repairs field -->
                     <input type="text" class="form-input" name="additionalrepairs" placeholder="Additional Repairs (optional)">
-
-                    <!-- Optional message field -->
                     <textarea class="form-input" name="message" placeholder="Message (optional)"></textarea>
-
                     <button class="btn-submit" type="reset">Clear All</button>
                     <button class="btn-submit" type="submit" name="submit">Submit</button>
                 </form>

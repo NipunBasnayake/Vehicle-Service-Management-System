@@ -35,7 +35,7 @@ echo "<script>window.location.href ='add-services.php'</script>";
 
 
 <!doctype html>
-<html lang="en" class="no-focus"> <!--<![endif]-->
+<html lang="en" class="no-focus">
 
 <head>
     <title>PVSC Admin | Add Services</title>

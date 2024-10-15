@@ -4,12 +4,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include('includes/dbconnection.php');
 
-if (strlen($_SESSION['obbsuid']) == 0) {
-    header('location:logout.php');
+if (strlen($_SESSION['odmsaid']) == 0) {
+    header('location:login.php');
     exit();
 } else {
-    $uid = $_SESSION['obbsuid'];
-
     $sql = "SELECT 
                 tblbooking.BookingID,
                 tbluser.FullName,
@@ -26,18 +24,13 @@ if (strlen($_SESSION['obbsuid']) == 0) {
             JOIN 
                 tbluser ON tbluser.ID = tblbooking.UserID 
             JOIN 
-                tblservice ON tblservice.ID = tblbooking.ServiceID 
-            WHERE 
-                tblbooking.UserID = :userid";
+                tblservice ON tblservice.ID = tblbooking.ServiceID";
 
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':userid', $uid, PDO::PARAM_INT);
-
-    $query->execute();
-
-    $results = $query->fetchAll(PDO::FETCH_OBJ);
-    $cnt = 1;
-?>
+        $query = $dbh->prepare($sql);
+        $query->execute();
+        $results = $query->fetchAll(PDO::FETCH_OBJ);
+        $cnt = 1;
+    ?>
 
 <!doctype html>
 <html lang="en">
@@ -50,7 +43,6 @@ if (strlen($_SESSION['obbsuid']) == 0) {
         <div class="content">
             <h2 class="content-heading">New Bookings</h2>
 
-            <!-- Back Button -->
             <div class="mb-3">
                 <a href="dashboard.php" class="btn btn-primary">Back to Dashboard</a>
             </div>

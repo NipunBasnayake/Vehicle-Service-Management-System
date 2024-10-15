@@ -34,7 +34,7 @@ echo '<script>alert("Your current password is wrong")</script>';
 }
  ?>
 <!doctype html>
- <html lang="en" class="no-focus"> <!--<![endif]-->
+ <html lang="en" class="no-focus">
     <head>
  <title>PVSC Admin | Change Password</title>
  
@@ -56,16 +56,11 @@ return true;
     <body>
     <?php include_once('includes/header.php'); ?>
 
-            <!-- Main Container -->
             <main id="main-container">
-                <!-- Page Content -->
                 <div class="content">
-                
-                    <!-- Register Forms -->
                     <h2 class="content-heading">Change Password</h2>
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- Bootstrap Register -->
                             <div class="block block-themed">
                                 <div class="block-content">
                                     <form method="post" onsubmit="return checkpass();" name="changepassword">
@@ -98,20 +93,13 @@ return true;
                                     </form>
                                 </div>
                             </div>
-                            <!-- END Bootstrap Register -->
                         </div>
-                        
-                       </div>
+                    </div>
                 </div>
-                <!-- END Page Content -->
             </main>
-            <!-- END Main Container -->
 
-          <?php include_once('includes/footer.php');?>
+        <?php include_once('includes/footer.php');?>
         </div>
-        <!-- END Page Container -->
-
-        <!-- Codebase Core JS -->
         <script src="assets/js/core/jquery.min.js"></script>
         <script src="assets/js/core/popper.min.js"></script>
         <script src="assets/js/core/bootstrap.min.js"></script>

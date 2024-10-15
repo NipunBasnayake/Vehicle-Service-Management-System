@@ -25,7 +25,7 @@ $query->execute();
   }
   ?>
 <!doctype html>
- <html lang="en" class="no-focus"> <!--<![endif]-->
+ <html lang="en" class="no-focus">
     <head>
  <title>PVSC Admin | Profile</title>
 <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
@@ -34,16 +34,11 @@ $query->execute();
     <body>
         <?php include_once('includes/header.php'); ?>
 
-            <!-- Main Container -->
             <main id="main-container">
-                <!-- Page Content -->
                 <div class="content">
-                
-                    <!-- Register Forms -->
                     <h2 class="content-heading">Admin Profile</h2>
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- Bootstrap Register -->
                             <div class="block block-themed">
                                 <div class="block-content">
                                     <?php
@@ -100,20 +95,14 @@ foreach($results as $row)
 
                                 </div>
                             </div>
-                            <!-- END Bootstrap Register -->
                         </div>
                         
                        </div>
                 </div>
-                <!-- END Page Content -->
             </main>
-            <!-- END Main Container -->
 
           <?php include_once('includes/footer.php');?>
         </div>
-        <!-- END Page Container -->
-
-        <!-- Codebase Core JS -->
         <script src="assets/js/core/jquery.min.js"></script>
         <script src="assets/js/core/popper.min.js"></script>
         <script src="assets/js/core/bootstrap.min.js"></script>

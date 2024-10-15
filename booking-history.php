@@ -85,17 +85,12 @@ if (strlen($_SESSION['obbsuid']) == 0) {
                                     <td><?php echo htmlentities($row->ServiceName); ?></td>
                                     <td><?php echo htmlentities($row->vehicleNumber); ?></td>
                                     <td><?php echo htmlentities($row->NumberOfWheels); ?></td>
-                                    
-                                    <!-- Only display 'additional' if it has a value -->
                                     <td>
                                         <?php echo !empty($row->additional) ? htmlentities($row->additional) : '-'; ?>
                                     </td>
-
-                                    <!-- Only display 'message' if it has a value -->
                                     <td>
                                         <?php echo !empty($row->Message) ? htmlentities($row->Message) : '-'; ?>
                                     </td>
-
                                     <td><?php echo $row->Status ? htmlentities($row->Status) : "Not Updated Yet"; ?></td>
                                 </tr>
                             <?php 

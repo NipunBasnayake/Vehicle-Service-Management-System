@@ -48,7 +48,6 @@ if(isset($_POST['submit'])) {
     <div class="backgroundImg">
         <div class="contactdiv">
             <div class="col-md-6 contact-form-left">
-                <!-- Contact Info -->
                 <div class="contactinfocol">
                     <h3>Contact Us</h3>
                     <?php
@@ -70,7 +69,6 @@ if(isset($_POST['submit'])) {
                     } ?>
                 </div>
 
-                <!-- Message Form -->
                 <div class="messagecol">
                     <h3>Send us a message</h3>
                     <form action="#" method="post">

@@ -4,12 +4,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include('includes/dbconnection.php');
 
-if (strlen($_SESSION['obbsuid']) == 0) {
-    header('location:logout.php');
+if (strlen($_SESSION['odmsaid']) == 0) {
+    header('location:login.php');
     exit();
 } else {
-    $uid = $_SESSION['obbsuid'];
-
     $sql = "SELECT 
                 tblbooking.BookingID,
                 tbluser.FullName,
@@ -28,16 +26,12 @@ if (strlen($_SESSION['obbsuid']) == 0) {
             JOIN 
                 tblservice ON tblservice.ID = tblbooking.ServiceID 
             WHERE 
-                tblbooking.Status = 'Declined' AND tblbooking.UserID = :userid";
-
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':userid', $uid, PDO::PARAM_INT);
-
-    $query->execute();
-
-    $results = $query->fetchAll(PDO::FETCH_OBJ);
-    $cnt = 1;
-?>
+                tblbooking.Status = 'Declined'";
+        $query = $dbh->prepare($sql);
+        $query->execute();
+        $results = $query->fetchAll(PDO::FETCH_OBJ);
+        $cnt = 1;
+    ?>
 
 <!doctype html>
 <html lang="en">
