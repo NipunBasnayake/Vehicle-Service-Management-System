@@ -6,7 +6,6 @@ if (strlen($_SESSION['odmsaid']==0)) {
   header('location:logout.php');
   } else{
 
-// Code for deleting product from cart
 if(isset($_GET['delid']))
 {
 $rid=intval($_GET['delid']);

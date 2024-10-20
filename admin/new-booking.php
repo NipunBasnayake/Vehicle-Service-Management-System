@@ -4,15 +4,12 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include('includes/dbconnection.php');
 
-// Check if user is logged in
 if (strlen($_SESSION['odmsaid']) == 0) {
     header('location:login.php');
     exit();
 } else {
     $uid = $_SESSION['odmsaid'];
-
-    // Prepare the SQL query to fetch new bookings
-// Modify the SQL query to fetch all new bookings (no UserID filter)
+    
 $sql = "SELECT 
             tblbooking.BookingID,
             tbluser.FullName,

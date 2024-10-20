@@ -54,31 +54,38 @@ if(isset($_POST['login']))
             align-items: center;
             height: 100vh;
         }
+
         .login-container {
             width: 300px;
             background-color: white;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         h2 {
             text-align: center;
             margin-bottom: 20px;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
         }
+
         .form-group input[type="text"], .form-group input[type="password"] {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
         }
+
         .form-group input[type="checkbox"] {
             margin-right: 5px;
         }
+
         .btn {
             width: 100%;
             padding: 10px;
@@ -87,13 +94,16 @@ if(isset($_POST['login']))
             border: none;
             cursor: pointer;
         }
+
         .btn:hover {
             background-color: #0056b3;
         }
+
         .auth-links {
             text-align: center;
             margin-top: 20px;
         }
+
         .auth-links a {
             color: #007BFF;
             text-decoration: none;
