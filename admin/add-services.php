@@ -39,7 +39,8 @@ echo "<script>window.location.href ='add-services.php'</script>";
 
 <head>
     <title>PVSC Admin | Add Services</title>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
 </head>
 
