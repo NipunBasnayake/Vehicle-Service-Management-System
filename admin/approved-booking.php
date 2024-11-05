@@ -37,13 +37,14 @@ if (strlen($_SESSION['odmsaid']) == 0) {
 <!doctype html>
 <html lang="en">
 <head>
-    <title>PVSC Admin | New Booking</title>
+    <title>PVSC Admin | Approved Booking</title>
     <link rel="stylesheet" href="assets/css/codebase.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
     <main id="main-container">
         <div class="content">
-            <h2 class="content-heading">New Bookings</h2>
+            <h2 class="content-heading">Approved Bookings</h2>
             <div class="mb-3">
                 <a href="dashboard.php" class="btn btn-primary">Back to Dashboard</a>
             </div>

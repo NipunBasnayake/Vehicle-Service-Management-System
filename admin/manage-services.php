@@ -25,11 +25,9 @@ $query->execute();
 <html lang="en" class="no-focus">
     <head>
         <title>PVSC Admin | Manage Services</title>
-
         <link rel="stylesheet" href="assets/js/plugins/datatables/dataTables.bootstrap4.min.css">
-
         <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
     <body>
         <?php include_once('includes/header.php'); ?>
