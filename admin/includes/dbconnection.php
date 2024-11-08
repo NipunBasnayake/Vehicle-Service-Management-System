@@ -1,8 +1,8 @@
 <?php 
 define('DB_HOST','localhost');
 define('DB_USER','root');
-define('DB_PASS','1234');
-define('DB_NAME','pvsc');
+define('DB_PASS','');
+define('DB_NAME','pereraservice');
 
 try {
     $dbh = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
