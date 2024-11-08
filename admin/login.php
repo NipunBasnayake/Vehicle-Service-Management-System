@@ -6,8 +6,8 @@ include('includes/dbconnection.php');
 if(isset($_POST['login'])) 
 {
     $username = $_POST['username'];
-    $password = md5($_POST['password']);
-    $sql = "SELECT ID FROM tbladmin WHERE UserName=:username and Password=:password";
+    $password = $_POST['password'];  // No encryption applied here
+    $sql = "SELECT ID FROM tbladmin WHERE UserName=:username AND Password=:password";
     $query = $dbh->prepare($sql);
     $query->bindParam(':username', $username, PDO::PARAM_STR);
     $query->bindParam(':password', $password, PDO::PARAM_STR);
@@ -21,14 +21,14 @@ if(isset($_POST['login']))
         }
 
         if(!empty($_POST["remember"])) {
-            setcookie ("user_login", $_POST["username"], time() + (10 * 365 * 24 * 60 * 60));
-            setcookie ("userpassword", $_POST["password"], time() + (10 * 365 * 24 * 60 * 60));
+            setcookie("user_login", $_POST["username"], time() + (10 * 365 * 24 * 60 * 60));
+            setcookie("userpassword", $_POST["password"], time() + (10 * 365 * 24 * 60 * 60));
         } else {
             if(isset($_COOKIE["user_login"])) {
-                setcookie ("user_login", "");
+                setcookie("user_login", "", time() - 3600);
             }
             if(isset($_COOKIE["userpassword"])) {
-                setcookie ("userpassword", "");
+                setcookie("userpassword", "", time() - 3600);
             }
         }
         $_SESSION['login'] = $_POST['username'];
@@ -44,6 +44,7 @@ if(isset($_POST['login']))
 <head>
     <title>Admin Login</title>
     <style>
+        /* Styling goes here */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
