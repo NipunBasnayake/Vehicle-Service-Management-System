@@ -1,7 +1,7 @@
 # **Vehicle Service Management System**
 
 ## **Overview**
-The Vehicle Service Management System (VSMS) is a comprehensive solution designed to automate and streamline the management of vehicle services. The system provides a user-friendly interface for vehicle owners, service centers, and administrators to manage service requests, appointments, vehicle details, service histories, and payments.
+The Vehicle Service Management System (VSMS) is a comprehensive solution designed to automate and streamline vehicle service management. It provides a user-friendly interface for vehicle owners, service centres, and administrators to manage service requests, appointments, vehicle details, service histories, and payments.
 
 ---
 
@@ -14,7 +14,7 @@ The Vehicle Service Management System (VSMS) is a comprehensive solution designe
   - Track service history and schedule future services.
 - **Service Request Management**:
   - Vehicle owners can request services, track service progress, and receive notifications.
-  - Service centre staff can manage the requests, assign tasks, and update the service status.
+  - Service centre staff can manage requests, assign tasks, and update service statuses.
 - **Admin Dashboard**:
   - Provides an overview of the system with statistics, service requests, user management, and more.
 
