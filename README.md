@@ -57,7 +57,7 @@ The Vehicle Service Management System (VSMS) is a comprehensive solution designe
 ![Placeholder for Screenshot 1](Screenshots/register.png)
 ![Placeholder for Screenshot 1](Screenshots/login.png)
 ![Placeholder for Screenshot 1](Screenshots/services.png)
-![Placeholder for Screenshot 1](Screenshots/admin.png)
+![Placeholder for Screenshot 1](Screenshots/.png)
 
 ---
 
